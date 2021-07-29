@@ -28,48 +28,35 @@ namespace test_leson11
         {
             InitializeComponent();
 
-            
+
 
             nodes = new ObservableCollection<Department>
             {
                 new Department
-            {
-                Name ="Европа",
-                Nodes = new ObservableCollection<Department>
                 {
-                    new Department {Name="Германия" },
-                    new Department {Name="Франция" },
-                    new Department
+                    Name ="Главный департамент",
+                    Id = 1,
+                    
+                    Nodes = new ObservableCollection<Department>
                     {
-                        Name ="Великобритания",
-                        Nodes = new ObservableCollection<Department>
+                        new Department {Name="Отдел аналитике", Id = 2},
+                        new Department {Name="Отдел ТП", Id = 3 },
+                        new Department
                         {
-                            new Department {Name="Англия" },
-                            new Department {Name="Шотландия" },
-                            new Department {Name="Уэльс" },
-                            new Department {Name="Сев. Ирландия" },
-                        }
+                            Name ="Отедел разработки", Id = 4,
+                            Nodes = new ObservableCollection<Department>
+                            {
+                                new Department {Name="Группа фронтенд", Id = 5 },
+                                new Department {Name="Группа бэкенд", Id = 6 },
+                            }
                     }
                 }
-            },
-                new Department
-            {
-                Name ="Азия",
-                Nodes = new ObservableCollection<Department>
-                {
-                    new Department {Name="Китай" },
-                    new Department {Name="Япония" },
-                    new Department { Name ="Индия" }
-                }
-            },
-                new Department { Name="Африка" },
-                new Department { Name="Америка" },
-                new Department { Name="Австралия" }
+            }
             };
 
             organization = new Organization
             {
-                Name = "ООО Мираж",
+                Name = "ООО Новые разработки",
                 Nodes = nodes,
                 Type = new OrganizationType { Name = "ООО", FullName = "Общество с ограниченной ответственностью"}
             };
@@ -78,6 +65,20 @@ namespace test_leson11
             {
                 organization
             };
+
+            var service = new DepartmentService(organization);
+
+            var dep1 = service.GetDepartmentById(1);
+
+            var emp1 = new LeaderEmployee
+            {
+                FirstName = "Иван",
+                LastName = "Драго",
+                Type = EmployeeType.Leader,
+                Department = dep1
+            };
+
+            dep1.Employees.Add(emp1);
 
             treeView1.ItemsSource = oneOrg;
         }
