@@ -15,6 +15,7 @@ namespace test_leson11
         {
             ratePerHour = 10;
             hourPerMonth = 160;
+            Type = EmployeeType.Worker;
         }
 
         public decimal CalculateSalary()
@@ -22,5 +23,9 @@ namespace test_leson11
             return ratePerHour * hourPerMonth;
         }
 
+        public EmployeeType GetEmployeeType()
+        {
+            return Type;
+        }
     }
 }

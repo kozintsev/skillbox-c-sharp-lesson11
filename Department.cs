@@ -7,12 +7,12 @@ namespace test_leson11
        
         public ObservableCollection<Department> Nodes { get; set; }
 
-        public ObservableCollection<Employee> Employees { get; set; }
+        public ObservableCollection<IEmployee> Employees { get; set; }
 
         public Department()
         {
             Nodes = new ObservableCollection<Department>();
-            Employees = new ObservableCollection<Employee>();
+            Employees = new ObservableCollection<IEmployee>();
         }
     }
 }

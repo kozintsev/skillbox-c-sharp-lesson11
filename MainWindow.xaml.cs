@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 
 namespace test_leson11
@@ -69,7 +70,6 @@ namespace test_leson11
             {
                 FirstName = "Иван",
                 LastName = "Драго",
-                Type = EmployeeType.Leader,
                 Department = dep1
             };
 
@@ -79,7 +79,6 @@ namespace test_leson11
             {
                 FirstName = "Петр",
                 LastName = "Сидоров",
-                Type = EmployeeType.Leader,
                 Department = dep2
             };
 
@@ -87,7 +86,6 @@ namespace test_leson11
             {
                 FirstName = "Олег",
                 LastName = "Иванов",
-                Type = EmployeeType.Intern,
                 Department = dep2
             };
 
@@ -95,8 +93,16 @@ namespace test_leson11
             {
                 FirstName = "Тима",
                 LastName = "Иванов",
-                Type = EmployeeType.Worker,
                 Department = dep2
+            };
+
+            var dep3 = service.GetDepartmentById(5);
+
+            var emp5 = new InternEmployee
+            {
+                FirstName = "Семён",
+                LastName = "Владимиров",
+                Department = dep3
             };
 
 
@@ -104,6 +110,7 @@ namespace test_leson11
             dep2.Employees.Add(emp2);
             dep2.Employees.Add(emp3);
             dep2.Employees.Add(emp4);
+            dep3.Employees.Add(emp5);
 
             treeView1.ItemsSource = oneOrg;
         }
@@ -111,8 +118,21 @@ namespace test_leson11
         private void treeView1_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             selected = (Essence)e.NewValue;
+            var item = selected as Department;
 
-            viewModel.Name = selected.Name;
+            if (item != null)
+            {
+                var emp = item.Employees.FirstOrDefault();
+
+                if (emp != null)
+                {
+                    Employee emp1 = (Employee)emp;
+                    viewModel.Name = emp1.FirstName + ' ' + emp1.LastName;
+                    viewModel.Salary = emp.CalculateSalary();
+
+                }
+
+            }
 
         }
     }

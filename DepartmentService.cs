@@ -18,6 +18,10 @@ namespace test_leson11
                 {
                     return item;
                 }
+                if (item.Nodes.Count > 0)
+                {
+                    return GetDepartmentByNodes(id, item.Nodes);
+                }
             }
 
             return null;

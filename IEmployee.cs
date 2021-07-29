@@ -3,5 +3,6 @@
     public interface IEmployee
     {
         public decimal CalculateSalary();
+        public EmployeeType GetEmployeeType();
     }
 }

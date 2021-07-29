@@ -16,7 +16,7 @@ namespace test_leson11
 
         public Organization Organization { get; set; }
 
-        public EmployeeType Type { get; set; }
+        protected EmployeeType Type { get; set; }
 
         //public Employee(Organization organization, Department department)
         //{

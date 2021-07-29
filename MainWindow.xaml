@@ -27,6 +27,8 @@
             <Label>First Name: </Label>
             <TextBlock Margin="5" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBlock>
             <Label>Last Name:</Label>
+            <Label>Стоимость:</Label>
+            <TextBlock Margin="5" Text="{Binding Salary, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBlock>
         </StackPanel>
 
     </Grid>

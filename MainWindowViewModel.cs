@@ -26,6 +26,18 @@ namespace test_leson11
             }
         }
 
+        private decimal _salary;
+
+        public decimal Salary
+        {
+            get { return _salary; }
+            set
+            {
+                _salary = value;
+                OnPropertyChanged("Salary");
+            }
+        }
+
         public ObservableCollection<Organization> Organizations;
 
         public event PropertyChangedEventHandler PropertyChanged;

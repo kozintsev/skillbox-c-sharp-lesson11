@@ -13,11 +13,17 @@ namespace test_leson11
         public InternEmployee()
         {
             salary = 200;
+            Type = EmployeeType.Intern;
         }
 
         public decimal CalculateSalary()
         {
             return salary;
+        }
+
+        public EmployeeType GetEmployeeType()
+        {
+            return Type;
         }
     }
 }
