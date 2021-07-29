@@ -24,10 +24,18 @@ namespace test_leson11
         ObservableCollection<Department> nodes;
         Organization organization;
 
+        MainWindowViewModel viewModel;
+
+        Essence selected;
+
         public MainWindow()
         {
             InitializeComponent();
+            selected = new Essence();
 
+            viewModel = new MainWindowViewModel();
+
+            DataContext = viewModel;
 
 
             nodes = new ObservableCollection<Department>
@@ -81,6 +89,15 @@ namespace test_leson11
             dep1.Employees.Add(emp1);
 
             treeView1.ItemsSource = oneOrg;
+        }
+
+        private void treeView1_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            selected = (Essence)e.NewValue;
+
+            viewModel.Name = selected.Name;
+
+            //MessageBox.Show(selected.Name);
         }
     }
 }
