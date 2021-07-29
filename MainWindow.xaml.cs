@@ -1,18 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace test_leson11
 {
@@ -86,7 +73,37 @@ namespace test_leson11
                 Department = dep1
             };
 
+            var dep2 = service.GetDepartmentById(4);
+
+            var emp2 = new LeaderEmployee
+            {
+                FirstName = "Петр",
+                LastName = "Сидоров",
+                Type = EmployeeType.Leader,
+                Department = dep2
+            };
+
+            var emp3 = new InternEmployee
+            {
+                FirstName = "Олег",
+                LastName = "Иванов",
+                Type = EmployeeType.Intern,
+                Department = dep2
+            };
+
+            var emp4 = new WorkerEmployee
+            {
+                FirstName = "Тима",
+                LastName = "Иванов",
+                Type = EmployeeType.Worker,
+                Department = dep2
+            };
+
+
             dep1.Employees.Add(emp1);
+            dep2.Employees.Add(emp2);
+            dep2.Employees.Add(emp3);
+            dep2.Employees.Add(emp4);
 
             treeView1.ItemsSource = oneOrg;
         }
@@ -97,7 +114,6 @@ namespace test_leson11
 
             viewModel.Name = selected.Name;
 
-            //MessageBox.Show(selected.Name);
         }
     }
 }
