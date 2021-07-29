@@ -16,6 +16,7 @@ namespace test_leson11
 
         Essence selected;
 
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -123,7 +124,14 @@ namespace test_leson11
             if (item != null)
             {
                 var emp = item.Employees.FirstOrDefault();
-
+                viewModel.ListEmployee.Clear();
+                foreach(var empItem in item.Employees)
+                {
+                    var emp2 = (Employee)empItem;
+                    
+                    viewModel.ListEmployee.Add(new Essence {Name = emp2.FirstName + ' ' + emp2.LastName });
+                }
+                listView1.ItemsSource = viewModel.ListEmployee;
                 if (emp != null)
                 {
                     Employee emp1 = (Employee)emp;

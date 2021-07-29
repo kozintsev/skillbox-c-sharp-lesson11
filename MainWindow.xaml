@@ -23,11 +23,17 @@
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
-        <StackPanel Orientation="Vertical" Grid.Column="1">
-            <Label>First Name: </Label>
-            <TextBlock Margin="5" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBlock>
-            <Label>Last Name:</Label>
-            <Label>Стоимость:</Label>
+        <ListBox Grid.Column="1" x:Name="listView1" ItemsSource="{Binding Path=ListEmployee, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="{Binding Path=Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2">
+            <Label>Стоимость (Итого):</Label>
             <TextBlock Margin="5" Text="{Binding Salary, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBlock>
         </StackPanel>
 

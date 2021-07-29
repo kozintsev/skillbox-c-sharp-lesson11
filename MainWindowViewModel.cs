@@ -38,6 +38,8 @@ namespace test_leson11
             }
         }
 
+        public ObservableCollection<Essence> ListEmployee = new ObservableCollection<Essence>();
+
         public ObservableCollection<Organization> Organizations;
 
         public event PropertyChangedEventHandler PropertyChanged;
