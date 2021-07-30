@@ -1,4 +1,6 @@
-﻿namespace test_leson11
+﻿using System.Collections.ObjectModel;
+
+namespace test_leson11
 {
     public class EmployeeService
     {
@@ -14,6 +16,17 @@
                 d += item.CalculateSalary();
             }
             return d;
+        }
+
+        public static decimal GetTotalMoney(ObservableCollection<IEmployee> employees)
+        {
+            decimal total = 0;
+            foreach(var item in employees)
+            {
+                total += item.CalculateSalary();
+            }
+
+            return total;
         }
     }
 }
