@@ -128,8 +128,9 @@ namespace test_leson11
                 foreach(var empItem in item.Employees)
                 {
                     var emp2 = (Employee)empItem;
-                    
-                    viewModel.ListEmployee.Add(new Essence {Name = emp2.FirstName + ' ' + emp2.LastName });
+                    var money = empItem.CalculateSalary();
+
+                    viewModel.ListEmployee.Add(new Essence { Name = $"{emp2.FirstName} {emp2.LastName} ЗП: {money} $" });
                 }
                 listView1.ItemsSource = viewModel.ListEmployee;
                 if (emp != null)
